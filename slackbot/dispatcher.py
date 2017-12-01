@@ -106,6 +106,11 @@ class MessageDispatcher(object):
 
     def filter_text(self, msg):
         full_text = msg.get('text', '') or ''
+        if not full_text:
+            attachment = msg.get('attachments')[0]
+            full_text = attachment.get('text')
+            for field in attachment.get('fields'):
+                full_text += field
         channel = msg['channel']
         bot_name = self._get_bot_name()
         bot_id = self._get_bot_id()
