@@ -111,6 +111,7 @@ class MessageDispatcher(object):
             full_text = attachment.get('text')
             for field in attachment.get('fields'):
                 full_text += field.get('value')
+            msg['text'] = full_text
         channel = msg['channel']
         bot_name = self._get_bot_name()
         bot_id = self._get_bot_id()
