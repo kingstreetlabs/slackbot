@@ -110,7 +110,7 @@ class MessageDispatcher(object):
             attachment = msg.get('attachments')[0]
             full_text = attachment.get('text')
             for field in attachment.get('fields'):
-                full_text += field
+                full_text += field.get('value')
         channel = msg['channel']
         bot_name = self._get_bot_name()
         bot_id = self._get_bot_id()
